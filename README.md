@@ -191,6 +191,7 @@ To plot the effect of the mixing weight  on the accuracy obtained by Fed-kNN, ru
 python make_plots weight_effect --results_dir <results_dir> --save_path <save_path>
 ```
 
+![weight_effect](https://user-images.githubusercontent.com/42912620/171421358-54217c16-d634-4d0c-9de8-4307d85f632a.png)
 
 ### Effect of data heterogeneity (only for CIFAR-10 and CIFAR-100)
 
@@ -202,6 +203,9 @@ cd scripts/<dataset_name>
 chmod +x heterogeneity_effect.sh
 ./heterogeneity_effect.sh
 ```
+
+![hetero_effect](https://user-images.githubusercontent.com/42912620/171421936-73ff5429-d266-4e28-84bf-57e20d9e8a1d.png)
+
 
 ## Citation
 
