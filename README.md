@@ -58,7 +58,7 @@ algorithms:
 * Ditto ([Li et al. 2021](https://proceedings.mlr.press/v139/li21h.html))
 * FedRep ([Collins et al. 2021](https://arxiv.org/abs/2102.07078))
 
-An example on how to for simulating a federated training using
+An example for simulating a federated training using
 FedAvg is provided in [examples/fed-avg.md](examples/fed-avg.md)
 
 
@@ -68,6 +68,8 @@ This repository implements kNN-Per described in
 [Personalized Federated Learning through Local Memorization](https://arxiv.org/abs/2111.09360).
 The object `KNNPerClient` represents a client with a local memory,
 represented as a `Datastore` object.
+
+An example of kNN-Per with CIFAR-10 dataset is provided in `examples/cifar-10.md`.
 
 ## Datasets
 
@@ -154,6 +156,29 @@ of heterogeneity can be found
 * Model trained using FedAvg on Shakespeare can be found
 [here](https://drive.google.com/drive/folders/1jlUFpXAcLyZ5EXmt7Qjz_yI4gdCMxCnm?usp=sharing)
 
+To download all the pretrained models, run
+
+```
+mkdir chkpts
+cd chkpts
+
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1g1qQsGWFPBb5yDWOXro9i8Gwd_XRohzj' -O 'cifar10-fedavg-alpha-1.0.pth'
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1HAaVBzolYPGmmvSJr5jgkugR5pjgC3L4' -O 'cifar10-fedavg-alpha-0.7.pth'
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1SPhDq9-SVmAHS_XQQIa4QFk2fnyjYA7M' -O 'cifar10-fedavg-alpha-0.5.pth'
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=14SsQ5uXNa7kvjR01g1eufOAR9t5sMfMy' -O 'cifar10-fedavg-alpha-0.3.pth'
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1yxSMq7m6e2-Pm8bKRJWW1AaF96LkDq_9' -O 'cifar10-fedavg-alpha-0.1.pth'
+
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1lo3t4suq7gF2jFQWq8hCbC5lHk2zODyY' -O 'cifar100-fedavg-alpha-1.0.pth'
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ms4mvRPuKVFIfl3D7Ka0apnekaW8wxxa' -O 'cifar100-fedavg-alpha-0.7.pth'
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1mzIfbYElguv0hIbYPP-0-LzEudsp66bI' -O 'cifar100-fedavg-alpha-0.5.pth'
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1disK-4yUPNpVVul8YR4bhpSRxwy9GClf' -O 'cifar100-fedavg-alpha-0.3.pth'
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1JVyhhnBacFvhJ6q93lBn3P12A9IQT85m' -O 'cifar100-fedavg-alpha-0.1.pth'
+
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1oKBBHmMKT7aHKDXAhYynjOXDlNtKYjUu' -O 'shakespeare-fedavg.pth'
+
+cd ../
+```
+
 ## Results
 
 ### Average performance of personalized models
@@ -179,7 +204,7 @@ To plot the effect of the datastore capacity on the accuracy obtained
 by kNN-Per, run
 
 ```plot
-python make_plots  capacity_effect --results_dir <results_dir> --save_path <save_path>
+python make_plots.py  capacity_effect <results_dir> --save_path <save_path>
 ```
 
 
@@ -188,7 +213,7 @@ python make_plots  capacity_effect --results_dir <results_dir> --save_path <save
 To plot the effect of the mixing weight  on the accuracy obtained by Fed-kNN, run
 
 ```plot
-python make_plots weight_effect --results_dir <results_dir> --save_path <save_path>
+python make_plots.py weight_effect <results_dir> --save_path <save_path>
 ```
 
 ![weight_effect](https://user-images.githubusercontent.com/42912620/171421358-54217c16-d634-4d0c-9de8-4307d85f632a.png)

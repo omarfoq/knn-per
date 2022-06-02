@@ -7,7 +7,7 @@ Splits `CIFAR10` dataset among `n_clients`, three methods are available:
 The dataset is shuffled and partitioned among `n_clients`
 
 ### By Labels Non-IID split
-The dataset is split among `n_clients` as follow:
+The dataset is split among `n_clients` as follows:
 1. classes are grouped into `n_clusters`.
 2. for each cluster `c` in `n_clusters`, samples are partitioned across clients using dirichlet distribution with parameter `alpha`.
 
@@ -35,9 +35,23 @@ Run generate_data.py with a choice of the following arguments:
 - `--n_components`: number of mixture components, written as integer, ignored if `--by_labels_split`  is not used; default=``-1``;
 - `--alpha`: parameter controlling tasks dissimilarity, the smaller alpha is the more tasks are dissimilar; default=``0.5``;
 - `--s_frac`: fraction of the dataset to be used; default=``1.0``;
-- `--tr_frac`: train set proportion for each task; default=``0.8``;
 - `--seed` := seed to be used before random sampling of data, default is `12345`;
 
-## Remarks
+### Remarks
 - In case `--pathological_split` and `--by_labels_split` are both selected, `--by_ labels_split` will be used.
 - If `n_components=-1`, then `n_components` will be set to be equal to `n_classes(=10)`.
+
+## Paper Experiments
+
+In order to generate the data split used in the paper, run
+
+```
+python generate_data.py \
+    --n_tasks 200 \
+    --by_labels_split \
+    --n_components -1 \
+    --alpha 0.1 \
+    --s_frac 1.0 \
+    --test_tasks_frac 0.0 \
+    --seed 12345 
+```

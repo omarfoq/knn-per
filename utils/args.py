@@ -19,13 +19,14 @@ class ArgumentsManager(ABC):
 
         self.parser.add_argument(
             'experiment',
-            help='name of experiment',
+            help='name of experiment, possible are:'
+                 '{"cifar10", "cifar100", "femnist", "shakespeare"}',
             type=str
         )
         self.parser.add_argument(
             '--model_name',
             help='the name of the model to be used, only used when experiment is CIFAR-10, CIFAR-100 or FEMNIST'
-                 'possible are mobilenet and resnet, default is mobilenet',
+                 'possible are {"mobilenet"}, default is mobilenet',
             type=str,
             default="mobilenet"
         )
@@ -270,7 +271,7 @@ class PlotsArgumentsManager(ArgumentsManager):
                  '{"capacity_effect", "weight_effect", "hetero_effect", "n_neighbors_effect"}'
         )
         self.parser.add_argument(
-            'results_dir',
+            '--results_dir',
             help='directory to the results; should contain files `all_scores.npy`, `capacities_grid.npy`,'
                  '`weights_grid.npy` abd `capacities_grid.npy`;',
             type=str
@@ -283,3 +284,13 @@ class PlotsArgumentsManager(ArgumentsManager):
 
     def args_to_string(self):
         pass
+
+    def parse_arguments(self, args_list=None):
+        if args_list:
+            args = self.parser.parse_args(args_list)
+        else:
+            args = self.parser.parse_args()
+
+        self.args = args
+
+        self.initialized = True
