@@ -6,6 +6,4 @@ matplotlib == 3.3.4
 faiss == 1.5.3
 tensorboard == 2.4.1
 torchvision == 0.9.1
-PIL == 8.1.2
-pypolyagamma
-gpytorch
+pillow == 8.1.2
