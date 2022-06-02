@@ -1,9 +1,8 @@
-tqdm == 4.59.0
-scikit-learn == 0.24.1
-numpy == 1.19.5
-torch == 1.9.0
-matplotlib == 3.3.4
-faiss == 1.5.3
-tensorboard == 2.4.1
-torchvision == 0.9.1
-pillow == 8.1.2
+tqdm >= 4.59.0
+scikit-learn >= 1.0.2
+numpy >= 1.21.6
+torch >= 1.7.0
+matplotlib >= 3.2.2
+tensorboard >= 2.4.1
+torchvision >= 0.8.0
+pillow >= 7.1.2
