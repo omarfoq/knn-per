@@ -416,7 +416,6 @@ def get_aggregator(
         seed=None
 ):
     """
-    `personalized` corresponds to pFedMe
 
     :param aggregator_type:
     :param clients:
@@ -461,5 +460,5 @@ def get_aggregator(
     else:
         raise NotImplementedError(
             f"{aggregator_type} is not available!"
-            f" Possible are: `centralized`, `clustered`, `agnostic`, ``fair, `L2SGD`, `APFL`."
+            f" Possible are: `local` and `centralized`."
         )

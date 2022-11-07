@@ -49,18 +49,38 @@ algorithms:
 
 * FedAvg ([McMahan et al. 2017](http://proceedings.mlr.press/v54/mcmahan17a.html))
 * FdProx ([Li et al. 2018](https://arxiv.org/abs/1812.06127))
-* Clustered FL ([Sattler et al. 2019](https://ieeexplore.ieee.org/abstract/document/9174890))
-* pFedMe ([Dinh et al. 2020](https://proceedings.neurips.cc/paper/2020/file/f4f1f13c8289ac1b1ee0ff176b56fc60-Paper.pdf))
-* L2SGD ([Hanzely et al. 2020](https://proceedings.neurips.cc/paper/2020/file/187acf7982f3c169b3075132380986e4-Paper.pdf))
-* APFL ([Deng et al. 2020](https://arxiv.org/abs/2003.13461))
 * q-FFL ([Li et al. 2020](https://openreview.net/forum?id=ByexElSYDr))
 * AFL ([Mohri et al. 2019](http://proceedings.mlr.press/v97/mohri19a.html))
+* Clustered FL ([Sattler et al. 2019](https://ieeexplore.ieee.org/abstract/document/9174890))
+* L2SGD ([Hanzely et al. 2020](https://proceedings.neurips.cc/paper/2020/file/187acf7982f3c169b3075132380986e4-Paper.pdf))
 * Ditto ([Li et al. 2021](https://proceedings.mlr.press/v139/li21h.html))
 * FedRep ([Collins et al. 2021](https://arxiv.org/abs/2102.07078))
+* APFL ([Deng et al. 2020](https://arxiv.org/abs/2003.13461))
+* PerFedAvg ([Fallah et al. 2020](https://proceedings.neurips.cc/paper/2020/hash/24389bfe4fe2eba8bf9aa9203a44cdad-Abstract.html))
 
-An example for simulating a federated training using
+Different algorithms can be obtained through different combinations of `Aggregator`(see `aggregator.py`),
+`Client`(see `client.py)`, and `Optimizer`(see `utils/optim.py`).
+The following table summarizes the combinations needed for each algorithm  
+
+|Algorithm     |          Aggregator         |      Client      | Optimizer  | 
+|--------------|-----------------------------|------------------|------------|
+|Local         | `NoCommunicationAggregator` |     `Client`     |   `sgd`    |
+|FedAvg        |   `CentralizedAggregator`   |     `Client`     |   `sgd`    |
+|FedProx       |   `CentralizedAggregator`   |     `Client`     | `prox-sgd` |
+|AFL           |    `AgnosticAggregator`     |`AgnosticFLClient`|   `sgd`    |
+|q-FFL         |      `FFLAggregator`        |   `FFLClient`    |   `sgd`    |
+|FedAvg+       |   `CentralizedAggregator`   |     `Client`     |   `sgd`    |
+|Clustered FL  |    `ClusteredAggregator`    |     `Client`     |   `sgd`    |
+|L2SGD         |`LoopLessLocalSGDAggregator` |     `Client`     |   `sgd`    |
+|Ditto         |   `PersonalizedAggregator`  |     `Client`     | `prox-sgd` |
+|FedRep        |   `CentralizedAggregator`   |  `FedRepClient`  |   `sgd`    | 
+|APFL          |      `APFLAggregator`       |     `Client`     |   `sgd`    |
+|PerFedAvg     |      `APFLAggregator`       | `PerFedAvgClient`|   `sgd`    |
+|kNN-Per       |   `CentralizedAggregator`   |  `KNNPerClient`  |   `sgd`    |
+
+
+A detailed example for simulating a federated training using
 FedAvg is provided in [examples/fed-avg.md](examples/fed-avg.md)
-
 
 ### kNN-Per
 
