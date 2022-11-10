@@ -20,17 +20,17 @@ cd ../..
 
 echo "Train base model | FedAvg"
 
-echo "Run FedAvg lr=0.03"
+echo "Run FedAvg lr=0.05"
 python train.py \
     cifar10 \
-    --n_rounds 200 \
+    --n_rounds 100 \
     --bz 128 \
-    --lr 0.03 \
+    --lr 0.05 \
     --lr_scheduler multi_step \
     --log_freq 10 \
     --device cuda \
     --optimizer sgd \
-    --logs_root logs/cifar10/FedAvg \
-    --save_path chkpts/cifar10_fedavg \
+    --logs_dir logs/cifar10/FedAvg \
+    --chkpts_dir chkpts/cifar10_fedavg \
     --seed 1234  \
     --verbose 1

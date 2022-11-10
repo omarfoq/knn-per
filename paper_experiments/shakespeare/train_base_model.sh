@@ -27,7 +27,7 @@ python train.py \
     --log_freq 10 \
     --device cuda \
     --optimizer sgd \
-    --logs_root logs/shakespeare/FedAvg \
-    --save_path chkpts/shakespeare_fedavg \
+    --logs_dir logs/shakespeare/FedAvg \
+    --chkpts_dir chkpts/shakespeare_fedavg \
     --seed 1234  \
     --verbose 1

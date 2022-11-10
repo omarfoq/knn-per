@@ -128,9 +128,9 @@ To train the base models used for Fed-kNN, run this command
 python train.py 
     <dataset_name> \
     --aggregator_type centralized \
-    --n_rounds 200 \
+    --n_rounds 100 \
     --bz 128 \
-    --lr 0.03 \
+    --lr 0.05 \
     --lr_scheduler multi_step \
     --log_freq 10 \
     --device cuda \
