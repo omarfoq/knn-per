@@ -594,6 +594,23 @@ class KNNPerClient(Client):
 
         return acc
 
+    def write_logs(self):
+        train_loss, train_acc, test_loss, test_acc = super().write_logs()
+
+        if self.counter % 10 == 0:
+            self.capacity = capacity
+            self.clear_datastore()
+            self.build_datastore()
+            self.gather_knn_outputs()
+
+            # todo: weight and capacity, take average?
+            weights = np.arange(0.1, 1. + 1e-6, 0.1)
+            for w in weights:
+                personal_acc = self.evaluate(w) * self.n_test_samples
+                self.logger.add_scalar("Personal/Metric{}".format(w), personal_acc, self.counter)
+
+        return train_loss, train_acc, test_loss, test_acc
+
     def clear_datastore(self):
         """
         clears `datastore`

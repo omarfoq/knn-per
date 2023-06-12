@@ -211,6 +211,9 @@ class Aggregator(ABC):
             global_logger.add_scalar("Test/Loss", global_test_loss, self.c_round)
             global_logger.add_scalar("Test/Metric", global_test_acc, self.c_round)
 
+            # Additional logging
+            global_logger.add_scalar("ClientsSampleSize", len(self.sampled_clients), self.c_round)
+
         if self.verbose > 0:
             print("#" * 80)
 
